@@ -2,7 +2,7 @@ import React from 'react'
 
 import Map from './Map'
 
-const View2 = () => {
+const View2 = (props) => {
   const location = {
       lat: - 41.296772,
       lng: 174.773787
@@ -11,9 +11,11 @@ const View2 = () => {
   return (
     <div className='mapContainerDiv'>
       <h2>Map will go below this</h2>
+      <h1>{props.shoutee.name} is gonna shout stuff</h1>
       <div style={{ width: "40vh", height: 600, background: 'red' }}>
         <Map center={location} />
       </div>
+      <button onClick={props.closeMap}>Close</button>
     </div >
   )
 } // setting up size of div that map goes in ^^^

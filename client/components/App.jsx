@@ -16,23 +16,39 @@ class App extends React.Component {
     this.state = {
       users: users,
       places: places,
-      isMapVisible: false
+      isMapVisible: false,
+      shoutee: null
     }
-    this.handleClick = this.handleClick.bind(this)
+    this.seeMap = this.seeMap.bind(this)
+    this.closeMap = this.closeMap.bind(this)
   }
 
-  handleClick () {
+  seeMap () {
+    // console.log('this is this.state:', this.state)
+    // console.log('this is isMapvis', isMapVisible)
+    console.log({users})
     this.setState({
-      isMapVisible: !this.state.isMapVisible
+      isMapVisible: true,
+      shoutee: users[Math.round(Math.random() * users.length)]
     })
   }
 
+  closeMap () {
+    this.setState({
+      isMapVisible: false,
+      shoutee:null
+    })
+  }
 
   render () {
+    console.log(this.state)
     return (
       <div>
-        <View1 seeMap={this.handleClick}/>
-        <View2 />
+        {
+          this.state.isMapVisible
+            ? <View2 closeMap={this.closeMap} shoutee={this.state.shoutee}/>
+            : <View1 seeMap={this.seeMap} users={users} />
+        }
       </div>
     )
   }
