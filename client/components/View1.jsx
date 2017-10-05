@@ -1,4 +1,5 @@
 import React from 'react'
+import View2 from './View2'
 
 class View1 extends React.Component {
   constructor(props) {
@@ -6,18 +7,17 @@ class View1 extends React.Component {
     this.state = {
       isMapVisible: false
     }
-   //  this.handleClick = this.handleClick.bind(this)
   }
 
   render () {
     return (
       <div>
         <h1>EDA Treatometer! Whose turn is it to shout?</h1>
-        <button onclick={this.seeMap}>Start !</button>
+        <button onClick={this.seeMap}>Start !</button>
         {
           this.state.isMapVisible
-            ? <Home />
-            : <Map />
+            ? <View1 />
+            : <View2 />
         }
       </div> 
     )
