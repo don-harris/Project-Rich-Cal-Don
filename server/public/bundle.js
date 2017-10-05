@@ -9683,18 +9683,43 @@ var Map = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Map.__proto__ || Object.getPrototypeOf(Map)).call(this, props));
 
-    _this.state = { center: props.center };
+    _this.state = {
+      height: '40vh',
+      width: '40vh',
+      center: props.center
+    };
     return _this;
   }
 
   _createClass(Map, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.loadMap(this.state.center);
+    }
+  }, {
+    key: 'loadMap',
+    value: function loadMap(center) {
+      this.map = new google.maps.Map(this.refs.map, {
+        center: center,
+        zoom: 17
+      });
+      this.marker = new google.maps.Marker({
+        position: center,
+        map: this.map
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var mapContainer = _react2.default.createElement('div', { style: { height: '100%', width: '100%' } }); // Map fill entire contents of its parent
-      // return mapContainer
-      return _react2.default.createElement(_reactGoogleMaps.GoogleMapLoader, {
-        containerElement: mapContainer
-      });
+      var _state = this.state,
+          height = _state.height,
+          width = _state.width;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'map', style: { width: width, height: height }, ref: 'map' },
+        'I should be a map!'
+      );
     }
   }]);
 
@@ -9702,24 +9727,6 @@ var Map = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Map;
-
-// const Map = () => {
-//   const mapContainer = <div style={{ height: '100%', width: '100%' }}></div> // Map fill entire contents of its parent
-
-//   return (
-//     <div>
-//       <GoogleMapLoader
-//         containerElement={mapContainer}
-//         googleMapElement={
-//           <GoogleMap
-//             defaultZoom={15}
-//             defaultCenter={this.props.center}
-//             options={{ streetViewControl: false, mapTypeControl: false }}>
-//           </GoogleMap>
-//         } />
-//     </div>
-//   )
-// }
 
 /***/ }),
 /* 85 */
@@ -9773,9 +9780,9 @@ var View2 = function View2() {
   var location = {
     lat: -41.296772,
     lng: 174.773787
-    // location variable, passing this as a center property to the Map ∨∨∨ 
+  };
 
-  };return _react2.default.createElement(
+  return _react2.default.createElement(
     'div',
     { className: 'mapContainerDiv' },
     _react2.default.createElement(
@@ -9785,7 +9792,7 @@ var View2 = function View2() {
     ),
     _react2.default.createElement(
       'div',
-      { style: { width: 300, height: 600, background: 'red' } },
+      { style: { width: "40vh", height: 600, background: 'red' } },
       _react2.default.createElement(_Map2.default, { center: location })
     )
   );
@@ -9793,6 +9800,10 @@ var View2 = function View2() {
 
 
 exports.default = View2;
+
+// this.props.places.
+// import data view2
+
 
 // class View2 extends React.Component {
 //   constructor(props) {
