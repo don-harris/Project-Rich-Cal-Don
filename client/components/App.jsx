@@ -8,7 +8,7 @@ import users from '../../seeds/users.js'
 import places from '../../seeds/places.js'
 
 import View1 from './View1'
-// import View2 from './View2'
+import View2 from './View2'
 
 class App extends React.Component {
   constructor (props) {
@@ -18,6 +18,7 @@ class App extends React.Component {
       places: places,
       isMapVisible: false
     }
+    this.handleClick = this.handleClick.bind(this)
   }
 
   handleClick () {
@@ -31,7 +32,7 @@ class App extends React.Component {
     return (
       <div>
         <View1 seeMap={this.handleClick}/>
-        {/* <View2 /> */}
+        <View2 />
       </div>
     )
   }
