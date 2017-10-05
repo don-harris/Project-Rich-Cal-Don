@@ -2,7 +2,7 @@ import React from 'react'
 
 const View1 = () => {
   return (
-    <h1>React development has begun!</h1>
+    <h1>EDA Treatometer! Whose turn is it to shout?</h1>
   )
 }
 

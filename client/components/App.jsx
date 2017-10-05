@@ -5,7 +5,10 @@ import View2 from './View2'
 
 const App = () => {
   return (
-    <h1>React development has begun!</h1>
+    <div>
+     <View1 />
+     <View2 />
+    </div>
   )
 }
 
