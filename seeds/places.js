@@ -1,4 +1,4 @@
-const places = {
+const places =
       [
         {
           id: 1001,
@@ -6,7 +6,7 @@ const places = {
           url: 'http://www.fidelscafe.com/',
           img: 'https://www.bloggeratlarge.com/wp-content/uploads/Fidels-Cuba-St.jpg',
           lat: -41.2961479,
-          long: 174.7720173 
+          long: 174.7720173
         },
         {
           id: 1002,
@@ -14,7 +14,7 @@ const places = {
           url: 'https://www.zomato.com/wellington/ekim-burgers-te-aro-wellington-city',
           img: 'http://whatsgood.co.nz/wp-content/uploads/2015/03/ekim-menu.jpg',
           lat: -41.2962865,
-          long: 174.7742274 
+          long: 174.7742274
         },
         {
           id: 1003,
@@ -31,6 +31,6 @@ const places = {
           img: 'https://bayleys-pri-cdn-endpoint.azureedge.net/listing-images/1950839/1950839_2_Listing_v2.jpg?v=636367079995900000',
           lat: -41.2949653,
           long: 174.7754525
-        },
+        }
       ]
-    }
+

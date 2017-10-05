@@ -1,4 +1,4 @@
-const users = {
+module.exports =
       [
         {
           id: 1001,
@@ -118,4 +118,4 @@ const users = {
           backStory: 'This fearsome warrior trained for thousands of years to master the little-known martial art of Murri-foo. Avoid triggerwords such as Zombieland, and Groundhog Day'
         }
       ]
-    }
+
