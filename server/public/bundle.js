@@ -8442,7 +8442,7 @@ var _Map2 = _interopRequireDefault(_Map);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var View2 = function View2() {
+var View2 = function View2(props) {
   var location = {
     lat: -41.296772,
     lng: 174.773787
@@ -8457,9 +8457,20 @@ var View2 = function View2() {
       'Map will go below this'
     ),
     _react2.default.createElement(
+      'h1',
+      null,
+      props.shoutee.name,
+      ' is gonna shout stuff'
+    ),
+    _react2.default.createElement(
       'div',
       { style: { width: "40vh", height: 600, background: 'red' } },
       _react2.default.createElement(_Map2.default, { center: location })
+    ),
+    _react2.default.createElement(
+      'button',
+      { onClick: props.closeMap },
+      'Close'
     )
   );
 }; // setting up size of div that map goes in ^^^
@@ -14887,27 +14898,41 @@ var App = function (_React$Component) {
     _this.state = {
       users: _users2.default,
       places: _places2.default,
-      isMapVisible: false
+      isMapVisible: false,
+      shoutee: null
     };
-    _this.handleClick = _this.handleClick.bind(_this);
+    _this.seeMap = _this.seeMap.bind(_this);
+    _this.closeMap = _this.closeMap.bind(_this);
     return _this;
   }
 
   _createClass(App, [{
-    key: 'handleClick',
-    value: function handleClick() {
+    key: 'seeMap',
+    value: function seeMap() {
+      // console.log('this is this.state:', this.state)
+      // console.log('this is isMapvis', isMapVisible)
+      console.log({ users: _users2.default });
       this.setState({
-        isMapVisible: !this.state.isMapVisible
+        isMapVisible: true,
+        shoutee: _users2.default[Math.round(Math.random() * _users2.default.length)]
+      });
+    }
+  }, {
+    key: 'closeMap',
+    value: function closeMap() {
+      this.setState({
+        isMapVisible: false,
+        shoutee: null
       });
     }
   }, {
     key: 'render',
     value: function render() {
+      console.log(this.state);
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_View2.default, { seeMap: this.handleClick }),
-        _react2.default.createElement(_View4.default, null)
+        this.state.isMapVisible ? _react2.default.createElement(_View4.default, { closeMap: this.closeMap, shoutee: this.state.shoutee }) : _react2.default.createElement(_View2.default, { seeMap: this.seeMap, users: _users2.default })
       );
     }
   }]);
@@ -15044,7 +15069,10 @@ var View1 = function (_React$Component) {
 
   _createClass(View1, [{
     key: 'render',
-    value: function render() {
+    value: function render(props) {
+      var _this2 = this;
+
+      console.log('this is props:', this.props);
       return _react2.default.createElement(
         'div',
         null,
@@ -15055,10 +15083,11 @@ var View1 = function (_React$Component) {
         ),
         _react2.default.createElement(
           'button',
-          { onClick: this.seeMap },
+          { onClick: function onClick() {
+              return _this2.props.seeMap();
+            } },
           'Start !'
-        ),
-        this.state.isMapVisible ? _react2.default.createElement(View1, null) : _react2.default.createElement(_View2.default, null)
+        )
       );
     }
   }]);
