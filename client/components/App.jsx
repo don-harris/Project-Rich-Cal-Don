@@ -29,7 +29,8 @@ class App extends React.Component {
     console.log({users})
     this.setState({
       isMapVisible: true,
-      shoutee: users[Math.round(Math.random() * users.length)]
+      shoutee: users[Math.round(Math.random() * users.length)],
+      places: places[Math.round(Math.random() * places.length)]
     })
   }
 
@@ -46,8 +47,8 @@ class App extends React.Component {
       <div>
         {
           this.state.isMapVisible
-            ? <View2 closeMap={this.closeMap} shoutee={this.state.shoutee}/>
-            : <View1 seeMap={this.seeMap} users={users} />
+            ? <View2 closeMap={this.closeMap} shoutee={this.state.shoutee} places={this.state.places}/>
+            : <View1 seeMap={this.seeMap} users={users} places={places}/>
         }
       </div>
     )

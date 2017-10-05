@@ -110,7 +110,7 @@ module.exports =
         },
         {
           id: 1013,
-          name: 'Don H',
+          name: 'Donald',
           github: 'don-harris',
           usrimage: '/images/donh.jpeg',
           alias: 'The Murricane',
