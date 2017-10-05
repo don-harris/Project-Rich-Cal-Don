@@ -4,17 +4,37 @@ import React from 'react'
 
 // import ReactDOM from 'react-dom'
 
-import View1 from './View1'
-import View2 from './View2'
+import users from '../../seeds/users.js'
+import places from '../../seeds/places.js'
 
-const App = () => {
-  return (
-    <div>
-     <View1 />
-     <View2 />
-    </div>
-  )
+import View1 from './View1'
+// import View2 from './View2'
+
+class App extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      users: users,
+      places: places,
+      isMapVisible: false
+    }
+  }
+
+  handleClick () {
+    this.setState({
+      isMapVisible: !this.state.isMapVisible
+    })
+  }
+
+
+  render () {
+    return (
+      <div>
+        <View1 seeMap={this.handleClick}/>
+        {/* <View2 /> */}
+      </div>
+    )
+  }
 }
 
 export default App
-
