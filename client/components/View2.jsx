@@ -1,10 +1,16 @@
 import React from 'react'
 
-// import reactDOM from 'react-dom'
+//
 
 import Map from './Map'
 
 class View2 extends React.Component {
+  constructor (props){
+    super(props)
+    this.state = {
+
+    }
+  }
   render() {
     const location = { // location variable, passing this as a center property to the Map ∨∨∨ 
       lat: - 41.296772,
