@@ -17,21 +17,31 @@ class App extends React.Component {
       users: users,
       places: places,
       isMapVisible: false,
-      shoutee: null
+      shoutee: null,
+      isSpinning: false,
+      countDown: null
     }
     this.seeMap = this.seeMap.bind(this)
     this.closeMap = this.closeMap.bind(this)
   }
 
   seeMap () {
-    // console.log('this is this.state:', this.state)
-    // console.log('this is isMapvis', isMapVisible)
-    console.log({users})
-    setTimeout(this.setState({
-      isMapVisible: true,
-      shoutee: users[Math.round(Math.random() * users.length)],
-      places: places[Math.round(Math.random() * places.length)]
-    }), 10000)
+    this.setState({isSpinning: true, countDown: 5})
+    let handle
+    handle = setInterval(() => {
+      if (this.state.countDown == null) return
+      else if (this.state.countDown > 0 ) this.setState({countDown: this.state.countDown - 1})
+      else {
+        this.setState({
+          isMapVisible: true,
+          isSpinning: false,
+          countDown: null,
+          shoutee: users[Math.round(Math.random() * users.length -1)],
+          places: places[Math.round(Math.random() * places.length -1)]
+        })
+        clearInterval(handle)
+      }
+    }, 1000)
   }
 
   closeMap () {
@@ -42,14 +52,14 @@ class App extends React.Component {
   }
 
   render () {
-    console.log(this.state)
     return (
-      <div>
+      <div className="section has-text-centered">
         {
           this.state.isMapVisible
             ? <View2 closeMap={this.closeMap} shoutee={this.state.shoutee} places={this.state.places}/>
-            : <View1 seeMap={this.seeMap} users={users} places={places}/>
+            : <View1 isSpinning={this.state.isSpinning} seeMap={this.seeMap} users={users} places={places}/>
         }
+        {this.state.isSpinning && <h1>{this.state.countDown}</h1>}
       </div>
     )
   }

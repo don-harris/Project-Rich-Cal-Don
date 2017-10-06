@@ -1,0 +1,26 @@
+body {
+  font-family: Raleway;
+  background-image: url('http://www.hdwallpaperspulse.com/wp-content/uploads/2015/11/08/high-quality-beautiful-backgrounds.jpg');
+  background-size: cover;
+}
+
+.image {
+  margin: auto;
+  border-radius: 50px;
+}
+
+.card {
+  max-width: 500px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.mapContainerDiv,
+.map {
+  max-width: 500px;
+  min-width: 500px;
+}
+/* 
+.mapContainerDiv {
+  margin-bottom: 30px;
+} */
