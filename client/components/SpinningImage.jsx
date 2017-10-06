@@ -8,21 +8,23 @@ export default class SpinningImage extends React.Component {
       isSpinning: false
     }
   }
+  componentWillUnmount() {
+    // this.setState({isSpinning: false})
+    clearInterval(2)
+  }
   startSpinning() {
-    setInterval(() => {
-      if (this.state.isSpinning) this.setState({ deg: (this.state.deg >= 360) ? 0 : this.state.deg + 1 })
-    }, 1)
+    const interval = setInterval(() => {
+      if (this.props.isSpinning) this.setState({ deg: (this.state.deg >= 360) ? 0 : this.state.deg + 1 })
+      // else clearInterval(2)
+    }, 10)
   }
-  toggleSpinning() {
-    this.setState({ isSpinning: !this.state.isSpinning })
-  }
-  componentDidMount() {
+  componentDidMount () {
     this.startSpinning()
   }
   render() {
     const { deg } = this.state
     return (
-      <img onClick={this.toggleSpinning.bind(this)} alt="not working" src="./charlottes-web.png" style={{ transform: `rotate(${deg}deg)` }} />
+      <img className="image" alt="not working" src="./images/dev-academy.png" style={{ transform: `rotate(${deg}deg)` }} />
     )
   }
 }
