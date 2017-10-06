@@ -11,12 +11,29 @@ const View2 = (props) => {
       <h1>{props.shoutee.name} is gonna shout stuff</h1>
       <div style={{ width: '40vh', height: '60vh', background: 'black' }}>
         <Map center={props.places.location} />
+      </div> */}
+
+      <div className="card">
+        <div className="card-image">
+          <figure className="image is-square">
+            <img src={props.places.img} alt="Placeholder image">
+          </figure>
+        </div>
+          <div className="card-content">
+            <div className="media">
+              <div className="media-left">
+              </div>
+                <div className="media-content">
+                <p className="title is-4">{props.places.placeName}</p>
+                </div>
+              </div>
+
+              <div className="content">
+              <a href={props.places.url}>Website</a>.
+              </div>
+          </div>
       </div>
-      <div>
-        <ul>
-          <li>{props.places.placeName}</li>
-        </ul>
-      </div>
+
       <button onClick={props.closeMap}>Close</button>
     </div >
   )
