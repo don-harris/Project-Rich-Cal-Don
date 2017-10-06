@@ -7,8 +7,8 @@ const View2 = (props) => {
   console.log('This is placeName', props.placeName)
   return (
     <div className='mapContainerDiv container has-text-centered'>
-      <h1 className='title'>{props.shoutee.name} is gonna shout stuff</h1>
-      <div style={{ width: '40vh', height: '60vh', background: 'black' }}>
+      <h1 className='title'>{props.shoutee.name}'s shout! Woohoo!!</h1>
+      <div style={{ width: '40vh', height: '40vh', background: 'black' }}>
         <Map center={props.places.location} />
       </div>
 
