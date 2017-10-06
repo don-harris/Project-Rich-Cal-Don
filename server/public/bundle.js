@@ -8443,11 +8443,8 @@ var _Map2 = _interopRequireDefault(_Map);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var View2 = function View2(props) {
-  var location = {
-    lat: -41.296772,
-    lng: 174.773787
-  };
-
+  console.log({ props: props });
+  console.log('This is placeName', props.placeName);
   return _react2.default.createElement(
     'div',
     { className: 'mapContainerDiv' },
@@ -8464,8 +8461,21 @@ var View2 = function View2(props) {
     ),
     _react2.default.createElement(
       'div',
-      { style: { width: "40vh", height: 600, background: 'red' } },
-      _react2.default.createElement(_Map2.default, { center: location })
+      { style: { width: '40vh', height: '60vh', background: 'black' } },
+      _react2.default.createElement(_Map2.default, { center: props.places.location })
+    ),
+    _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(
+        'ul',
+        null,
+        _react2.default.createElement(
+          'li',
+          null,
+          props.places.placeName
+        )
+      )
     ),
     _react2.default.createElement(
       'button',
@@ -8475,12 +8485,10 @@ var View2 = function View2(props) {
   );
 }; // setting up size of div that map goes in ^^^
 
-
 exports.default = View2;
 
 // this.props.places.
 // import data view2
-
 
 // class View2 extends React.Component {
 //   constructor(props) {
@@ -14912,10 +14920,11 @@ var App = function (_React$Component) {
       // console.log('this is this.state:', this.state)
       // console.log('this is isMapvis', isMapVisible)
       console.log({ users: _users2.default });
-      this.setState({
+      setTimeout(this.setState({
         isMapVisible: true,
-        shoutee: _users2.default[Math.round(Math.random() * _users2.default.length)]
-      });
+        shoutee: _users2.default[Math.round(Math.random() * _users2.default.length)],
+        places: _places2.default[Math.round(Math.random() * _places2.default.length)]
+      }), 10000);
     }
   }, {
     key: 'closeMap',
@@ -14932,7 +14941,7 @@ var App = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        this.state.isMapVisible ? _react2.default.createElement(_View4.default, { closeMap: this.closeMap, shoutee: this.state.shoutee }) : _react2.default.createElement(_View2.default, { seeMap: this.seeMap, users: _users2.default })
+        this.state.isMapVisible ? _react2.default.createElement(_View4.default, { closeMap: this.closeMap, shoutee: this.state.shoutee, places: this.state.places }) : _react2.default.createElement(_View2.default, { seeMap: this.seeMap, users: _users2.default, places: _places2.default })
       );
     }
   }]);
@@ -14980,7 +14989,7 @@ var Map = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Map.__proto__ || Object.getPrototypeOf(Map)).call(this, props));
 
     _this.state = {
-      height: '40vh',
+      height: '60vh',
       width: '40vh',
       center: props.center
     };
@@ -15129,34 +15138,42 @@ document.addEventListener('DOMContentLoaded', function () {
 "use strict";
 
 
-var places = [{
+module.exports = [{
   id: 1001,
   placeName: 'Fidel\'s Cafe',
   url: 'http://www.fidelscafe.com/',
   img: 'https://www.bloggeratlarge.com/wp-content/uploads/Fidels-Cuba-St.jpg',
-  lat: -41.2961479,
-  long: 174.7720173
+  location: {
+    lat: -41.2961479,
+    lng: 174.7720173
+  }
 }, {
   id: 1002,
   placeName: 'Ekim Burgers',
   url: 'https://www.zomato.com/wellington/ekim-burgers-te-aro-wellington-city',
   img: 'http://whatsgood.co.nz/wp-content/uploads/2015/03/ekim-menu.jpg',
-  lat: -41.2962865,
-  long: 174.7742274
+  location: {
+    lat: -41.2962865,
+    lng: 174.7742274
+  }
 }, {
   id: 1003,
   placeName: 'Hotel Bristol',
   url: 'https://www.hotelbristol.co.nz/',
   img: 'http://www.wellingtoncityheritage.org.nz/~/media/heritage/buildings/0-150/078-4/image5.ashx?mw=671&mh=415',
-  lat: -41.2930679,
-  long: 174.7759682
+  location: {
+    lat: -41.2930679,
+    lng: 174.7759682
+  }
 }, {
   id: 1004,
   placeName: 'Subway (Eat Fresh)',
   url: 'https://www.zomato.com/wellington/subway-1-te-aro-wellington-city',
   img: 'https://bayleys-pri-cdn-endpoint.azureedge.net/listing-images/1950839/1950839_2_Listing_v2.jpg?v=636367079995900000',
-  lat: -41.2949653,
-  long: 174.7754525
+  location: {
+    lat: -41.2949653,
+    lng: 174.7754525
+  }
 }];
 
 /***/ }),
@@ -15264,7 +15281,7 @@ module.exports = [{
   backStory: "What's better than one Wonder Woman?? Well two of course..."
 }, {
   id: 1013,
-  name: 'Don H',
+  name: 'Donald',
   github: 'don-harris',
   usrimage: '/images/donh.jpeg',
   alias: 'The Murricane',

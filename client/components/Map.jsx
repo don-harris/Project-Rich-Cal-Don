@@ -5,7 +5,7 @@ export default class Map extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      height: '40vh',
+      height: '60vh',
       width: '40vh',
       center: props.center
     }

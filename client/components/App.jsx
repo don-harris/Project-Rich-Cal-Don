@@ -27,10 +27,11 @@ class App extends React.Component {
     // console.log('this is this.state:', this.state)
     // console.log('this is isMapvis', isMapVisible)
     console.log({users})
-    this.setState({
+    setTimeout(this.setState({
       isMapVisible: true,
-      shoutee: users[Math.round(Math.random() * users.length)]
-    })
+      shoutee: users[Math.round(Math.random() * users.length)],
+      places: places[Math.round(Math.random() * places.length)]
+    }), 10000)
   }
 
   closeMap () {
@@ -46,8 +47,8 @@ class App extends React.Component {
       <div>
         {
           this.state.isMapVisible
-            ? <View2 closeMap={this.closeMap} shoutee={this.state.shoutee}/>
-            : <View1 seeMap={this.seeMap} users={users} />
+            ? <View2 closeMap={this.closeMap} shoutee={this.state.shoutee} places={this.state.places}/>
+            : <View1 seeMap={this.seeMap} users={users} places={places}/>
         }
       </div>
     )
