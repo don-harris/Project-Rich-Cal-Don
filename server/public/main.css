@@ -1,3 +1,15 @@
-.placeImage {
-  height: 400px;
+
+
+.card {
+  max-width: 500px;
+}
+
+.mapContainerDiv, .map {
+  max-width: 500px;
+  min-width: 500px;
+}
+
+.mapContainerDiv {
+  margin-bottom: 30px;
+
 }
