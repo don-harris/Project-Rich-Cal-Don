@@ -8447,15 +8447,10 @@ var View2 = function View2(props) {
   console.log('This is placeName', props.placeName);
   return _react2.default.createElement(
     'div',
-    { className: 'mapContainerDiv' },
-    _react2.default.createElement(
-      'h2',
-      null,
-      'Map will go below this'
-    ),
+    { className: 'mapContainerDiv container has-text-centered' },
     _react2.default.createElement(
       'h1',
-      null,
+      { className: 'title' },
       props.shoutee.name,
       ' is gonna shout stuff'
     ),
@@ -8466,20 +8461,66 @@ var View2 = function View2(props) {
     ),
     _react2.default.createElement(
       'div',
-      null,
+      { className: 'card' },
       _react2.default.createElement(
-        'ul',
-        null,
+        'div',
+        { className: 'card-image' },
         _react2.default.createElement(
-          'li',
-          null,
-          props.places.placeName
+          'figure',
+          { className: 'image is-4by3' },
+          _react2.default.createElement('img', { src: props.places.img, alt: 'Placeholder image' })
+        )
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'card-content' },
+        _react2.default.createElement(
+          'div',
+          { className: 'media' },
+          _react2.default.createElement(
+            'div',
+            { className: 'media-left' },
+            _react2.default.createElement(
+              'figure',
+              { className: 'image is-48x48' },
+              _react2.default.createElement('img', { src: 'http://bulma.io/images/placeholders/96x96.png', alt: 'Placeholder image' })
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'media-content' },
+            _react2.default.createElement(
+              'p',
+              { className: 'title is-4' },
+              props.places.placeName
+            ),
+            _react2.default.createElement(
+              'p',
+              { className: 'subtitle is-6' },
+              _react2.default.createElement(
+                'a',
+                { href: props.places.url },
+                'Website'
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'content' },
+          props.places.info,
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'p',
+            null,
+            props.places.address
+          )
         )
       )
     ),
     _react2.default.createElement(
       'button',
-      { onClick: props.closeMap },
+      { className: 'button', onClick: props.closeMap },
       'Close'
     )
   );
@@ -15245,6 +15286,8 @@ module.exports = [{
   id: 1001,
   placeName: 'Fidel\'s Cafe',
   url: 'http://www.fidelscafe.com/',
+  info: 'Great Snickers shakes...',
+  address: '234 Cuba St, Te Aro, Wellington 6011',
   img: 'https://www.bloggeratlarge.com/wp-content/uploads/Fidels-Cuba-St.jpg',
   location: {
     lat: -41.2961479,
@@ -15254,6 +15297,8 @@ module.exports = [{
   id: 1002,
   placeName: 'Ekim Burgers',
   url: 'https://www.zomato.com/wellington/ekim-burgers-te-aro-wellington-city',
+  info: 'Top-notch burgers in the sun...',
+  address: '257 Cuba St, Te Aro, Wellington 6011',
   img: 'http://whatsgood.co.nz/wp-content/uploads/2015/03/ekim-menu.jpg',
   location: {
     lat: -41.2962865,
@@ -15263,6 +15308,8 @@ module.exports = [{
   id: 1003,
   placeName: 'Hotel Bristol',
   url: 'https://www.hotelbristol.co.nz/',
+  info: 'Great beers and beats...',
+  address: '131-133 Cuba St, Te Aro, Wellington 6011',
   img: 'http://www.wellingtoncityheritage.org.nz/~/media/heritage/buildings/0-150/078-4/image5.ashx?mw=671&mh=415',
   location: {
     lat: -41.2930679,
@@ -15270,8 +15317,10 @@ module.exports = [{
   }
 }, {
   id: 1004,
-  placeName: 'Subway (Eat Fresh)',
+  placeName: 'Subway',
   url: 'https://www.zomato.com/wellington/subway-1-te-aro-wellington-city',
+  info: 'Eat Fresh...',
+  address: '140 Vivian St, Wellington City, Wellington 6011',
   img: 'https://bayleys-pri-cdn-endpoint.azureedge.net/listing-images/1950839/1950839_2_Listing_v2.jpg?v=636367079995900000',
   location: {
     lat: -41.2949653,

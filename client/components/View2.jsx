@@ -3,26 +3,48 @@ import React from 'react'
 import Map from './Map'
 
 const View2 = (props) => {
-  console.log({props})
+  console.log({ props })
   console.log('This is placeName', props.placeName)
   return (
-    <div className='mapContainerDiv'>
-      <h2>Map will go below this</h2>
-      <h1>{props.shoutee.name} is gonna shout stuff</h1>
+    <div className='mapContainerDiv container has-text-centered'>
+      <h1 className='title'>{props.shoutee.name} is gonna shout stuff</h1>
       <div style={{ width: '40vh', height: '60vh', background: 'black' }}>
         <Map center={props.places.location} />
       </div>
-      <div>
-        <ul>
-          <li>{props.places.placeName}</li>
-        </ul>
+
+      <div className="card">
+        <div className="card-image">
+          <figure className="image is-4by3">
+            <img src={props.places.img} alt="Placeholder image" />
+          </figure>
+        </div>
+        <div className="card-content">
+          <div className="media">
+            <div className="media-left">
+              <figure className="image is-48x48">
+                <img src="http://bulma.io/images/placeholders/96x96.png" alt="Placeholder image" />
+              </figure>
+            </div>
+            <div className="media-content">
+              <p className="title is-4">{props.places.placeName}</p>
+              <p className="subtitle is-6"><a href={props.places.url}>Website</a></p>
+            </div>
+          </div>
+
+          <div className="content">{props.places.info}
+            <br />
+            <p>{props.places.address}</p>
+          </div>
+        </div>
       </div>
-      <button onClick={props.closeMap}>Close</button>
+
+      <button className='button' onClick={props.closeMap}>Close</button>
     </div >
   )
 } // setting up size of div that map goes in ^^^
 
 export default View2
+
 
 // this.props.places.
 // import data view2
