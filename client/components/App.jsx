@@ -26,8 +26,11 @@ class App extends React.Component {
   }
 
   seeMap () {
-    this.setState({isSpinning: true, countDown: 5})
+    this.setState({isSpinning: true, countDown: 30})// change countdown value to change time
     let handle
+    const randomUserIndex = Math.ceil(Math.random() * users.length - 1)
+    const randomPlaceIndex = Math.ceil(Math.random() * places.length - 1)
+    console.log(randomUserIndex, randomPlaceIndex)
     handle = setInterval(() => {
       if (this.state.countDown == null) return
       else if (this.state.countDown > 0 ) this.setState({countDown: this.state.countDown - 1})
@@ -36,8 +39,8 @@ class App extends React.Component {
           isMapVisible: true,
           isSpinning: false,
           countDown: null,
-          shoutee: users[Math.round(Math.random() * users.length -1)],
-          places: places[Math.round(Math.random() * places.length -1)]
+          shoutee: users[randomUserIndex],
+          places: places[randomPlaceIndex]
         })
         clearInterval(handle)
       }
@@ -57,7 +60,7 @@ class App extends React.Component {
         {
           this.state.isMapVisible
             ? <View2 closeMap={this.closeMap} shoutee={this.state.shoutee} places={this.state.places}/>
-            : <View1 isSpinning={this.state.isSpinning} seeMap={this.seeMap} users={users} places={places}/>
+            : <View1 isSpinning={this.state.isSpinning} seeMap={this.seeMap} users={this.state.users} places={this.state.places}/>
         }
         {this.state.isSpinning && <h1>{this.state.countDown}</h1>}
       </div>

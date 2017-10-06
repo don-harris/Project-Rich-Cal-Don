@@ -8452,11 +8452,11 @@ var View2 = function View2(props) {
       'h1',
       { className: 'title' },
       props.shoutee.name,
-      ' is gonna shout stuff'
+      '\'s shout! Woohoo!!'
     ),
     _react2.default.createElement(
       'div',
-      { style: { width: '40vh', height: '60vh', background: 'black' } },
+      { style: { width: '40vh', height: '40vh', background: 'black' } },
       _react2.default.createElement(_Map2.default, { center: props.places.location })
     ),
     _react2.default.createElement(
@@ -14962,16 +14962,19 @@ var App = function (_React$Component) {
     value: function seeMap() {
       var _this2 = this;
 
-      this.setState({ isSpinning: true, countDown: 5 });
+      this.setState({ isSpinning: true, countDown: 30 }); // change countdown value to change time
       var handle = void 0;
+      var randomUserIndex = Math.ceil(Math.random() * _users2.default.length - 1);
+      var randomPlaceIndex = Math.ceil(Math.random() * _places2.default.length - 1);
+      console.log(randomUserIndex, randomPlaceIndex);
       handle = setInterval(function () {
         if (_this2.state.countDown == null) return;else if (_this2.state.countDown > 0) _this2.setState({ countDown: _this2.state.countDown - 1 });else {
           _this2.setState({
             isMapVisible: true,
             isSpinning: false,
             countDown: null,
-            shoutee: _users2.default[Math.round(Math.random() * _users2.default.length - 1)],
-            places: _places2.default[Math.round(Math.random() * _places2.default.length - 1)]
+            shoutee: _users2.default[randomUserIndex],
+            places: _places2.default[randomPlaceIndex]
           });
           clearInterval(handle);
         }
@@ -14991,7 +14994,7 @@ var App = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'section has-text-centered' },
-        this.state.isMapVisible ? _react2.default.createElement(_View4.default, { closeMap: this.closeMap, shoutee: this.state.shoutee, places: this.state.places }) : _react2.default.createElement(_View2.default, { isSpinning: this.state.isSpinning, seeMap: this.seeMap, users: _users2.default, places: _places2.default }),
+        this.state.isMapVisible ? _react2.default.createElement(_View4.default, { closeMap: this.closeMap, shoutee: this.state.shoutee, places: this.state.places }) : _react2.default.createElement(_View2.default, { isSpinning: this.state.isSpinning, seeMap: this.seeMap, users: this.state.users, places: this.state.places }),
         this.state.isSpinning && _react2.default.createElement(
           'h1',
           null,
@@ -15044,7 +15047,7 @@ var Map = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Map.__proto__ || Object.getPrototypeOf(Map)).call(this, props));
 
     _this.state = {
-      height: '60vh',
+      height: '40vh',
       width: '40vh',
       center: props.center
     };
